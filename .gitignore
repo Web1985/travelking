@@ -1,0 +1,12 @@
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Gulp
+.gulp/
+gulpfile.js.map
+
+package-lock.json
+
+.vscode/
+.idea/
