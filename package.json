@@ -2,15 +2,15 @@
   "name": "travelking",
   "version": "1.0.0",
   "description": "test task",
-  "main": "index.js",
+  "main": "gulpfile.js",
   "scripts": {
-    "test": "test"
+    "start": "gulp"
   },
   "author": "Viktor Kuznietsov",
   "license": "ISC",
   "devDependencies": {
     "gulp": "^5.0.0",
-    "gulp-autoprefixer": "^9.0.0",
+    "gulp-autoprefixer": "^7.0.1",
     "gulp-clean-css": "^4.3.0",
     "gulp-sass": "^6.0.0",
     "gulp-sourcemaps": "^3.0.0",

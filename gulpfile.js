@@ -1,31 +1,31 @@
 const gulp = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
-const cleanCSS = require('gulp-clean-css');
-const autoprefixer = require('gulp-autoprefixer');
+const sass = require('gulp-sass')(require('sass')); // Use Dart Sass
 const sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('gulp-autoprefixer');
 
 const paths = {
-    scss: './scss/**/*.scss',
-    css: './css/'
+  scss: {
+    src: './scss/**/*.scss',
+    dest: './css',
+  },
 };
 
-function compileSCSS() {
-    return gulp.src(paths.scss)
-        .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer({
-            overrideBrowserslist: ['last 2 versions'],
-            cascade: false
-        }))
-        .pipe(cleanCSS())
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(paths.css));
+// Task to compile SCSS
+function styles() {
+  return gulp
+    .src(paths.scss.src)
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.scss.dest));
 }
 
-function watchFiles() {
-    gulp.watch(paths.scss, compileSCSS);
+// Watch task
+function watch() {
+  gulp.watch(paths.scss.src, styles);
 }
 
-exports.compile = compileSCSS;
-exports.watch = watchFiles;
-exports.default = gulp.series(compileSCSS, watchFiles);
+exports.styles = styles;
+exports.watch = watch;
+exports.default = gulp.series(styles, watch);
