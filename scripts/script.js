@@ -91,7 +91,9 @@ async function fetchRooms(url) {
 
     console.log(hotels);
   } catch (error) {
+
     console.log("Error: " + error);
+
   }
 }
 
