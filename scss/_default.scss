@@ -49,7 +49,7 @@ a {
     align-items: center;
 }
 
-header {
+#header {
     background-color: #c2a5d1;
     padding: 10px;
     position: sticky;
@@ -74,7 +74,7 @@ main {
     min-height: calc(100vh - 193px);
 }
 
-footer {
+#footer {
     text-align: center;
     padding: 50px 20px;
     background-color: #000;
@@ -117,4 +117,13 @@ footer {
         display: flex;
         flex-direction: column;
         border-radius: 50%;
+}
+
+.apply-button {
+
+}
+
+.room-card{
+    display: flex;
+
 }
