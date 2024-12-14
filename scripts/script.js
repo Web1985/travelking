@@ -55,6 +55,7 @@ function precessDates(data) {
     altFormat: "Y-m-d",
     dateFormat: "Y-m-d",
     mode: "range",
+    showMonths: 2,
     minDate: "today",
     enable: enable_dates,
     onDayCreate: function (dObj, dStr, fp, dayElem) {
