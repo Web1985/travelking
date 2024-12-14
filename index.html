@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Travelking">
+        <meta name="author" content="Viktor Kuznietsov">
+        <title>Accessible Webpage</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    </head>
+    <body>
+        <!-- Skip Link for Screen Readers -->
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+
+        <!-- Header -->
+        <header>
+            <div class="container display-flex">
+                <div class="logo">
+                    <a href="#main-content" class="logo--link">Travelking</a>
+                </div>
+                <nav aria-label="Main navigation">
+                    <ul>
+                        <li><a href="#check-availabilities"
+                                aria-current="page">Check
+                                Availabilities</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            <div class="container">
+                <section id="check-availabilities" class="section"
+                    aria-labelledby="home-heading">
+                    <h1 id="check-availabilities--heading">Welcome to Our
+                        Travelking Website</h1>
+                    <p>Here you can check availabilities and prices for 6 months
+                        in advance for 2 adults.</p>
+                    <div class="check-availabilities--btn--wrapper">
+                        <button id="check-availabilities--btn" class="btn">Check
+                            Availabilities</button>
+                        <button id="check-rooms--btn" class="btn">Find
+                            rooms</button>
+                    </div>
+                </section>
+                <div id="calendar"></div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 Travelking Test Website. All rights reserved.</p>
+        </footer>
+        <script src="./scripts/script.js" async></script>
+    </body>
+</html>
