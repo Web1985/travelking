@@ -56,24 +56,42 @@ function precessDates(data) {
 
       if (enable_dates_obj[formattedDate]) {
         dayElem.innerHTML = `<button class='day--btn'><span class='day-number'>${dayElem.innerHTML}</span>
-          <span class='event'>${enable_dates_obj[formattedDate].price}</span></button>`;
+          <span class='day-price'>${enable_dates_obj[formattedDate].price}</span></button>`;
       }
     },
+    onClose: function(selectedDates, dateStr, instance){
+
+        const calendar_wrapper = document.getElementById('calendar-wrapper');
+        calendar_wrapper.remove();
+    },
+    onOpen: (selectedDates, dateStr, instance) => {
+        const calendar_container = instance.calendarContainer;
+
+        // Create a new wrapper element
+        const wrapper = document.createElement('div');
+        wrapper.id = 'calendar-wrapper'; // Optional: Add a class to the wrapper
+
+        // Insert the wrapper into the DOM before the target
+        calendar_container.parentNode.insertBefore(wrapper, calendar_container);
+
+        // Move the target inside the wrapper
+        wrapper.appendChild(calendar_container);
+    },
     onReady: (selectedDates, dateStr, instance) => {
-      const applyButton = document.createElement("button");
-      applyButton.textContent = "Apply";
-      applyButton.className = "apply-button btn";
+      const apply_button = document.createElement("button");
+      apply_button.textContent = "Apply";
+      apply_button.className = "apply-button btn";
 
-      const calendarContainer = instance.calendarContainer;
-      calendarContainer.appendChild(applyButton);
+      const calendar_container = instance.calendarContainer;
+      calendar_container.appendChild(apply_button);
 
-      applyButton.addEventListener("click", () => {
+      apply_button.addEventListener("click", () => {
         instance.close();
 
-        let inputDates = instance.input.value;
-        let startDate = inputDates.split(" to ")[0];
-        let endDate = inputDates.split(" to ")[1];
-        displayRooms(startDate, endDate);
+        let input_dates = instance.input.value;
+        let start_date = input_dates.split(" to ")[0];
+        let end_date = input_dates.split(" to ")[1];
+        displayRooms(start_date, end_date);
       });
     },
   };
@@ -87,8 +105,8 @@ async function createCalendar(url, target) {
   precessDates(data);
 }
 
-async function fetchRooms(startDate, endDate) {
-  const url = quoteeUrl(startDate, endDate);
+async function fetchRooms(start_date, end_date) {
+  const url = quoteeUrl(start_date, end_date);
   try {
     const response = await fetch(url);
 
@@ -140,7 +158,7 @@ function roomCard(room) {
 
                 <div class="room-card--body">
                 <div class="room-card--body--price">
-                    <span class="room-card--body--price--number">${room.full_price}</span>
+                    <span class="room-card--body--price--number">${room.full_formatted_price}</span>
                     <span class="room-card--body--price--nights">
                     for ${room.fullPriceBreakdown.nights} nights
                     </span>
@@ -154,8 +172,8 @@ function roomCard(room) {
     );
 }
 
-async function displayRooms(startDate, endDate) {
-  const hotels = await fetchRooms(startDate, endDate);
+async function displayRooms(start_date, end_date) {
+  const hotels = await fetchRooms(start_date, end_date);
   precessRooms(hotels);
 }
 
