@@ -1,7 +1,130 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+.room-card {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.1);
+  gap: 15px;
+  animation: fade-in 0.5s ease-in-out;
+  margin-bottom: 20px;
+  display: flex;
+}
+.room-card.display-none {
+  display: none;
+}
+.room-card .room-card--left {
+  width: 30%;
+  border-radius: 8px;
+  flex-shrink: 0;
+  min-height: 200px;
+}
+.room-card .room-card--left img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+.room-card .room-card--right {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  padding: 20px 0;
+}
+.room-card .room-card--body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 70%;
+}
+.room-card .room-card--body--price {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 30%;
+  text-align: right;
+}
+.room-card .room-card--body--price--number {
+  width: 100%;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.room-card .room-card--body--price--nights {
+  color: #acacac;
+}
+
+.room-card--body--amenities {
+  display: flex;
+  flex-wrap: wrap;
+}
+.room-card--body--amenities div {
+  padding: 5px;
+  border-radius: 5px;
+  color: #7c7b7b;
+  background-color: #f2f2f2;
+  margin: 0 5px 5px 0;
+}
+
+.error-message {
+  padding: 20px 30px;
+  background: #eee3f7;
+  color: #40224c;
+}
+
+.suspense-block {
+  /* Placeholder for the image */
+}
+.suspense-block .room-card--left {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f4f4f4 50%, #e0e0e0 75%);
+  animation: loading 1.5s infinite;
+}
+.suspense-block .room-card--header {
+  height: 30px;
+  width: 70%;
+  border-radius: 4px;
+}
+.suspense-block .room-card--header {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f4f4f4 50%, #e0e0e0 75%);
+  animation: loading 1.5s infinite;
+}
+.suspense-block .room-card--body--price {
+  align-items: flex-end;
+}
+.suspense-block .room-card--body--price--number.suspense-line {
+  width: 50%;
+}
+.suspense-block .room-card--body--amenities {
+  min-height: 50px;
+}
+.suspense-block .suspense-line {
+  height: 15px;
+  width: 100%;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f4f4f4 50%, #e0e0e0 75%);
+  border-radius: 4px;
+  animation: loading 1.5s infinite;
+}
+
+/* Animations */
+@keyframes loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 body {
   font-size: 14px;
-  line-height: 1.5em;
+  line-height: 1em;
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -10,23 +133,23 @@ body {
 
 h1 {
   font-size: 2rem;
-  line-height: 1.5em;
   margin-top: 0;
+  line-height: 1em;
 }
 
 h2 {
   font-size: 1.7rem;
-  line-height: 1.5em;
+  margin-top: 0;
+  line-height: 1em;
 }
 
 h3 {
   font-size: 1.4rem;
-  line-height: 1.5em;
+  line-height: 1em;
 }
 
 p {
   font-size: 1rem;
-  line-height: 1.5em;
 }
 
 a {
@@ -72,9 +195,11 @@ nav a {
 }
 
 main {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   min-height: calc(100vh - 193px);
+  padding-bottom: 40px;
 }
 
 #footer {
@@ -90,11 +215,10 @@ main {
 
 #check-availabilities {
   box-sizing: border-box;
-  max-width: 650px;
   margin: 50px auto;
   padding: 40px 30px;
-  border-radius: 30px;
-  -webkit-border-radius: 30px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
   box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.1);
 }
@@ -109,6 +233,7 @@ main {
   cursor: pointer;
   color: #fff;
   background-color: #000;
+  border: none;
   padding: 0 40px;
   margin: 20px auto 0;
   height: 60px;
@@ -116,6 +241,10 @@ main {
   text-align: center;
   border-radius: 30px;
   -webkit-border-radius: 30px;
+  transition: background 300ms ease-in;
+}
+.btn:hover {
+  background-color: #acacac;
 }
 
 .day--btn {
@@ -146,11 +275,17 @@ main {
   left: 0;
   z-index: 100;
 }
+#calendar-wrapper .dayContainer {
+  padding: 0 5px;
+}
 #calendar-wrapper .flatpickr-calendar {
   box-sizing: content-box;
   padding: 30px;
   top: 0 !important;
   position: relative;
+}
+#calendar-wrapper .flatpickr-calendar::before, #calendar-wrapper .flatpickr-calendar::after {
+  display: none;
 }
 #calendar-wrapper .flatpickr-prev-month {
   top: 27px;
@@ -165,9 +300,13 @@ main {
   font-weight: 700;
   line-height: 1.75em;
   border-radius: 10px;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
+  background-color: #e8d4fa;
+  position: relative;
+  z-index: 10;
 }
 #calendar-wrapper .flatpickr-day.flatpickr-disabled {
+  background: #f2f2f2;
   color: #acacac;
 }
 #calendar-wrapper .flatpickr-day.endRange, #calendar-wrapper .flatpickr-day.inRange, #calendar-wrapper .flatpickr-day.startRange {
@@ -200,34 +339,31 @@ main {
   border-bottom-left-radius: 0;
   z-index: 10;
   background-color: #aa4cfb;
+  box-shadow: -4px 0 0 #f4d6f9;
 }
 #calendar-wrapper .flatpickr-day.endRange span {
   color: #fff;
+}
+#calendar-wrapper .flatpickr-day.endRange.startRange {
+  border-radius: 10px;
+  box-shadow: none !important;
 }
 #calendar-wrapper .flatpickr-day.inRange {
   border: none;
   border-radius: 0;
   z-index: 2;
   background-color: #f4d6f9;
-  box-shadow: 10px 0 0 #f4d6f9;
+  box-shadow: -4px 0 0 #f4d6f9;
 }
-#calendar-wrapper .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)), #calendar-wrapper .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)), #calendar-wrapper .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
-  box-shadow: -10px 0 0 #f4d6f9;
+#calendar-wrapper .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+7) {
+  box-shadow: -4px 0 0 #f4d6f9 !important;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
-
-.day--btn {
-  border: none;
-  border-radius: 10px;
-  background-color: #e8d4fa;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
-  text-align: center;
-  position: relative;
-  z-index: 10;
-  padding-top: 6px;
-  align-items: center;
+#calendar-wrapper .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+1) {
+  box-shadow: none !important;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .day-number {
@@ -239,9 +375,12 @@ main {
 .day-price {
   position: absolute;
   z-index: 1;
-  bottom: 2px;
+  bottom: 3px;
   font-size: 0.7rem;
   font-weight: 400;
+  left: 0;
+  right: 0;
+  line-height: 1em;
   color: #8e69a8;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,9 +1,9 @@
-@use 'colors' as colors;
+@use "colors" as colors;
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 body {
     font-size: 14px;
-    line-height: 1.5em;
+    line-height: 1em;
     font-family: "Open Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -12,20 +12,20 @@ body {
 
 h1 {
     font-size: 2rem;
-    line-height: 1.5em;
     margin-top: 0;
+    line-height: 1em;
 }
 h2 {
     font-size: 1.7rem;
-    line-height: 1.5em;
+    margin-top: 0;
+    line-height: 1em;
 }
 h3 {
     font-size: 1.4rem;
-    line-height: 1.5em;
+    line-height: 1em;
 }
 p {
     font-size: 1rem;
-    line-height: 1.5em;
 }
 a {
     text-decoration: none;
@@ -33,6 +33,7 @@ a {
 .skip-link {
     display: none;
 }
+
 .container {
     max-width: 992px;
     padding: 0 20px;
@@ -67,15 +68,17 @@ nav {
     color: #fff;
 }
 main {
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     min-height: calc(100vh - 193px);
+    padding-bottom: 40px;
 }
 
 #footer {
     text-align: center;
     padding: 50px 20px;
-    background-color: #000;
+    background-color: colors.$black;
     color: #fff;
     text-align: center;
     p {
@@ -85,11 +88,10 @@ main {
 
 #check-availabilities {
     box-sizing: border-box;
-    max-width: 650px;
     margin: 50px auto;
     padding: 40px 30px;
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
     box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.1);
 }
@@ -101,7 +103,8 @@ main {
     font-size: 1.3rem;
     cursor: pointer;
     color: #fff;
-    background-color: #000;
+    background-color: colors.$black;
+    border: none;
     padding: 0 40px;
     margin: 20px auto 0;
     height: 60px;
@@ -109,6 +112,14 @@ main {
     text-align: center;
     border-radius: 30px;
     -webkit-border-radius: 30px;
+    -webkit-transition: background 300ms ease-in;
+    -moz-transition: background 300ms ease-in;
+    -ms-transition: background 300ms ease-in;
+    -o-transition: background 300ms ease-in;
+    transition: background 300ms ease-in;
+    &:hover {
+        background-color: colors.$grey;
+    }
 }
 
 .day--btn {
@@ -140,11 +151,18 @@ main {
         left: 0;
         z-index: 100;
     }
+    .dayContainer {
+        padding: 0 5px;
+    }
     .flatpickr-calendar {
         box-sizing: content-box;
         padding: 30px;
         top: 0 !important;
         position: relative;
+        &::before,
+        &::after{
+            display: none;
+        }
     }
     .flatpickr-prev-month {
         top: 27px;
@@ -159,10 +177,14 @@ main {
         font-weight: 700;
         line-height: 1.75em;
         border-radius: 10px;
-        margin-bottom: 3px;
+        margin-bottom: 2px;
+        background-color: colors.$violet_ligthen;
+        position: relative;
+        z-index: 10;
 
         &.flatpickr-disabled {
-            color: #acacac;
+            background: colors.$grey_light;
+            color: colors.$grey;
         }
         &.endRange,
         &.inRange,
@@ -178,28 +200,34 @@ main {
             border-bottom-right-radius: 0;
             z-index: 1;
             background-color: colors.$violet;
-     &::after{
-        content: '';
-        width: 150%;
-        height: 100%;
-        position: absolute;
-        top:0;
-        left: 0;
-        z-index: 1;
-     }
+            &::after {
+                content: "";
+                width: 150%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
             span {
                 color: #fff;
             }
-
         }
         &.endRange {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
             z-index: 10;
             background-color: colors.$violet;
-
+            -webkit-box-shadow: -4px 0 0 colors.$violet_ligth;
+            box-shadow: -4px 0 0 colors.$violet_ligth;
             span {
                 color: #fff;
+            }
+            &.startRange {
+                border-radius: 10px;
+                -webkit-box-shadow: none !important;
+                box-shadow: none !important;
             }
         }
         &.inRange {
@@ -208,40 +236,39 @@ main {
             z-index: 2;
             background-color: colors.$violet_ligth;
 
-            -webkit-box-shadow: 10px 0 0 colors.$violet_ligth;
-            box-shadow: 10px 0 0 colors.$violet_ligth;
-
+            -webkit-box-shadow: -4px 0 0 colors.$violet_ligth;
+            box-shadow: -4px 0 0 colors.$violet_ligth;
         }
     }
-    .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)), .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)), .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
-        -webkit-box-shadow: -10px 0 0 colors.$violet_ligth;
-        box-shadow: -10px 0 0 colors.$violet_ligth;
+
+    .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+7){
+        -webkit-box-shadow: -4px 0 0 colors.$violet_ligth !important;
+        box-shadow: -4px 0 0 colors.$violet_ligth !important;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+1){
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
 }
-.day--btn {
-    border: none;
-    border-radius: 10px;
-    background-color: colors.$violet_ligthen;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    text-align: center;
-    position: relative;
-    z-index: 10;
-    padding-top: 6px;
-    align-items: center;
-}
+
 .day-number {
     font-size: 1rem;
     font-weight: 700;
     color: colors.$violet_dark;
 }
+
 .day-price {
     position: absolute;
     z-index: 1;
-    bottom: 2px;
+    bottom: 3px;
     font-size: 0.7rem;
     font-weight: 400;
+    left: 0;
+    right: 0;
+    line-height: 1em;
     color: colors.$violet_dark_lighter;
 }
