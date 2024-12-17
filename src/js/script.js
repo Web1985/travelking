@@ -11,7 +11,7 @@ function quoteeUrl(start_date, end_date) {
 }
 
 /*
- ** Get Available dates from API
+ ** Get Available dates from API.
  */
 async function fetchDates(url, target) {
   const btn_text = target.innerText;
