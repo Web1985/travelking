@@ -10,6 +10,9 @@ function quoteeUrl(start_date, end_date) {
 &checkout=${end_date}&party=%7B"adults":2,"children":[]%7D&domain=de`;
 }
 
+/*
+ ** Get Available dates from API
+ */
 async function fetchDates(url, target) {
   const btn_text = target.innerText;
   target.innerText = "loading...";
@@ -28,6 +31,9 @@ async function fetchDates(url, target) {
   }
 }
 
+/*
+ ** Put Available Dates to the Calendar
+ */
 function precessDates(data) {
   let enable_dates = [];
   let enable_dates_obj = {};
@@ -41,11 +47,9 @@ function precessDates(data) {
   let showMonthsVar = window.innerWidt > 800 ? 2 : 1;
 
   const config = {
-    altFormat: "Y-m-d",
     dateFormat: "Y-m-d",
     closeOnSelect: false,
     mode: "range",
-    position: 'auto center',
     showMonths: showMonthsVar,
     enable: enable_dates,
     onDayCreate: function (dObj, dStr, fp, dayElem) {
@@ -61,23 +65,16 @@ function precessDates(data) {
           `;
       }
     },
-    onClose: function (selectedDates, dateStr, instance) {
-      const calendar_wrapper = document.getElementById("calendar-wrapper");
-      calendar_wrapper.remove();
-    },
+
     onOpen: (selectedDates, dateStr, instance) => {
       const calendar_container = instance.calendarContainer;
       const wrapper = document.createElement("div");
-      wrapper.id = "calendar-wrapper"; // Optional: Add a class to the wrapper
+      wrapper.id = "calendar-wrapper";
       calendar_container.parentNode.insertBefore(wrapper, calendar_container);
       wrapper.appendChild(calendar_container);
-    },
-    onReady: (selectedDates, dateStr, instance) => {
       const apply_button = document.createElement("button");
       apply_button.textContent = "Apply";
       apply_button.className = "apply-button btn";
-
-      const calendar_container = instance.calendarContainer;
       calendar_container.appendChild(apply_button);
 
       apply_button.addEventListener("click", () => {
@@ -89,23 +86,33 @@ function precessDates(data) {
         displayRooms(start_date, end_date);
       });
     },
+    onClose: function (selectedDates, dateStr, instance) {
+      const calendar_wrapper = document.getElementById("calendar-wrapper");
+      calendar_wrapper.remove();
+    },
   };
 
   let calendar = flatpickr("#calendar", config);
   calendar.open();
 }
 
+/*
+ ** Create Calendar
+ */
 async function createCalendar(url, target) {
   const data = await fetchDates(url, target);
   precessDates(data);
 }
 
+/*
+ ** Get Available Rooms from API for the selected dates
+ */
 async function fetchRooms(start_date, end_date) {
   const url = quoteeUrl(start_date, end_date);
   const section_rooms = document.getElementById("section--rooms");
-  section_rooms.innerHTML = sceletonTemplate();
+  section_rooms.innerHTML = roomCard();
   const message = document.getElementById("section--message");
-  const section_rooms_1 = document.getElementById("section--rooms--1");
+  const room_card = document.querySelectorAll(".room-card");
 
   try {
     message.innerHTML = "";
@@ -119,109 +126,90 @@ async function fetchRooms(start_date, end_date) {
 
     return hotels._embedded.hotel_quotes;
   } catch (error) {
-    section_rooms_1.classList.add("display-none");
+    const section_rooms = document.getElementById("section--rooms");
+    section_rooms.innerHTML = null;
 
     message.innerHTML = `<div class="error-message">
     There are no rooms available for the selected period. Please try another dates.</div>`;
 
     console.log("Error: " + error);
   } finally {
-    section_rooms_1.classList.remove("suspense-block");
+    room_card.forEach((element) => {
+      element.classList.remove("suspense-block");
+    });
   }
 }
 
-function precessRooms(rooms) {
-  rooms.map((room, index) => {
-    let room_card = roomCard(room, index);
-    if (index > 0) {
-      const section_rooms = document.getElementById("section--rooms");
+/*
+ ** Display Rooms
+ */
+async function displayRooms(start_date, end_date) {
+  const rooms = await fetchRooms(start_date, end_date);
+  const section_rooms = document.getElementById("section--rooms");
+  section_rooms.innerHTML = null;
+  if (rooms) {
+    rooms.map((room, index) => {
+      let room_card = roomCard(room, index);
       section_rooms.innerHTML += room_card;
-    }
-  });
+    });
+  }
 }
 
-function roomCard(room, index) {
+/*
+ ** Template for Rooms article with suspense effect
+ */
+function roomCard(room, index = 0) {
+  let suspens_block_classname = "suspense-block";
+  let suspens_line_classname = "suspense-line";
+  let description = "";
+  let img = "";
   let amenitie = "";
-  if (room._embedded.amenities) {
-    amenitie = room._embedded.amenities.reduce((amenities, item) => {
-      return amenities + `<div>${item.description}</div>`;
-    }, "");
+  let price = "";
+  let nights = "";
+
+  if (room) {
+    suspens_block_classname = "";
+    suspens_line_classname = "";
+    description = room.description;
+    price = room.full_formatted_price;
+    nights = room.fullPriceBreakdown.nights;
+
+    img = `<img src="${room._embedded.pictures[0].offer_teaser_ncol}"
+     alt="${room._embedded.pictures[0].description}" loading="lazy" />`;
+
+    if (room._embedded.amenities) {
+      amenitie = room._embedded.amenities.reduce((amenities, item) => {
+        return amenities + `<div>${item.description}</div>`;
+      }, "");
+    }
   }
 
-  if (index === 0) {
-    const first_room_box = document.getElementById("section--rooms--1");
-    first_room_box.classList.remove("suspense-block");
-    first_room_box.getElementsByClassName("room-card--left")[0].innerHTML = `
-        <img
-            src="${room._embedded.pictures[0].offer_teaser_ncol}"
-            alt="${room._embedded.pictures[0].description}"
-            loading="lazy"
-        />
-    `;
-    first_room_box.getElementsByClassName("room-card--header")[0].innerText =
-      room.description;
-    first_room_box.getElementsByClassName(
-      "room-card--body--amenities"
-    )[0].innerHTML = amenitie;
-    first_room_box.getElementsByClassName(
-      "room-card--body--price--number"
-    )[0].innerText = room.full_formatted_price;
-    first_room_box.getElementsByClassName(
-      "room-card--body--price--nights"
-    )[0].innerText = `for ${room.fullPriceBreakdown.nights} nights`;
-    first_room_box.getElementsByClassName(
-      "room-card--body--price--number"
-    )[0].innerText = room.full_formatted_price;
-  } else {
-    return `<article class="room-card">
+  return `
+    <article id="section--rooms--${index}" class="room-card ${suspens_block_classname}">
                 <div class="room-card--left">
-                    <img src="${room._embedded.pictures[0].offer_teaser_ncol}"
-                    alt="${room._embedded.pictures[0].description}" loading="lazy" />
+                    ${img}
                 </div>
                 <div class="room-card--right">
                     <div class="room-card--body">
-                        <h2 class="room-card--header">${room.description}</h2>
-                        <div class="room-card--body--amenities">
+                        <h2 class="room-card--header">${description}</h2>
+                        <div class="room-card--body--amenities ${suspens_line_classname}">
                         ${amenitie}
                         </div>
                     </div>
                     <div class="room-card--body--price">
-                        <span class="room-card--body--price--number">${room.full_formatted_price}</span>
-                        <span class="room-card--body--price--nights">
-                        for ${room.fullPriceBreakdown.nights} nights
+                        <span class="room-card--body--price--number ${suspens_line_classname}">
+                          ${price}
+                        </span>
+                        <span class="room-card--body--price--nights ${suspens_line_classname}">
+                          for ${nights} nights
                         </span>
                     </div>
                 </div>
             </article>`;
-  }
 }
-
-async function displayRooms(start_date, end_date) {
-  const hotels = await fetchRooms(start_date, end_date);
-  if (hotels) {
-    precessRooms(hotels);
-  }
-}
-
-let btn = document.getElementById("check-availabilities--btn");
-btn.onclick = (event) => createCalendar(CHECKINS_URL, event.target);
 
 /*
-** Template for Rooms article with suspense block
-*/
-function sceletonTemplate() {
-  return `
-    <div id="section--rooms--1" class="room-card suspense-block">
-        <div class="room-card--left"></div>
-        <div class="room-card--right">
-            <div class="room-card--body">
-                <h2 class="room-card--header"></h2>
-                <div class="room-card--body--amenities suspense-line"></div>
-            </div>
-            <div class="room-card--body--price">
-                <div class="room-card--body--price--number suspense-line"></div>
-                 <div class="room-card--body--price--nights suspense-line"></div>
-            </div>
-        </div>
-    </div>`;
-}
+ ** onClick event for the "Check Availabilities" button
+ */
+let btn = document.getElementById("check-availabilities--btn");
+btn.onclick = (event) => createCalendar(CHECKINS_URL, event.target);
