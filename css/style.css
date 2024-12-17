@@ -11,8 +11,10 @@
   margin-bottom: 20px;
   display: flex;
 }
-.room-card.display-none {
-  display: none;
+@media (max-width: 768px) {
+  .room-card {
+    flex-wrap: wrap;
+  }
 }
 .room-card .room-card--left {
   width: 30%;
@@ -20,8 +22,13 @@
   flex-shrink: 0;
   min-height: 200px;
 }
+@media (max-width: 768px) {
+  .room-card .room-card--left {
+    width: 100%;
+  }
+}
 .room-card .room-card--left img {
-  max-width: 100%;
+  width: 100%;
   border-radius: 8px;
 }
 .room-card .room-card--right {
@@ -30,18 +37,34 @@
   flex: 1;
   padding: 20px 0;
 }
+@media (max-width: 600px) {
+  .room-card .room-card--right {
+    width: 100%;
+    flex-direction: column;
+  }
+}
 .room-card .room-card--body {
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 70%;
 }
+@media (max-width: 768px) {
+  .room-card .room-card--body {
+    width: 100%;
+  }
+}
 .room-card .room-card--body--price {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 30%;
   text-align: right;
+  width: 30%;
+}
+@media (max-width: 600px) {
+  .room-card .room-card--body--price {
+    width: 100%;
+  }
 }
 .room-card .room-card--body--price--number {
   width: 100%;
@@ -68,6 +91,8 @@
   padding: 20px 30px;
   background: #eee3f7;
   color: #40224c;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
 }
 
 .suspense-block {
@@ -165,7 +190,7 @@ a {
   padding: 0 20px;
   margin: 0 auto;
   width: 100%;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .display-flex {
@@ -176,16 +201,9 @@ a {
 }
 
 #header {
-  background-color: #c2a5d1;
-  padding: 10px;
+  background-color: #4c8ffb;
+  padding: 20px 10px;
   position: sticky;
-}
-
-nav ul {
-  list-style: none;
-}
-nav a {
-  color: #fff;
 }
 
 .logo--link {
@@ -198,7 +216,7 @@ main {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  min-height: calc(100vh - 193px);
+  min-height: calc(100vh - 174px);
   padding-bottom: 40px;
 }
 
@@ -244,17 +262,13 @@ main {
   transition: background 300ms ease-in;
 }
 .btn:hover {
-  background-color: #acacac;
+  background-color: #4c8ffb;
 }
 
 .day--btn {
   display: flex;
   flex-direction: column;
   border-radius: 50%;
-}
-
-.room-card {
-  display: flex;
 }
 
 #calendar-wrapper {
@@ -282,6 +296,7 @@ main {
   box-sizing: content-box;
   padding: 30px;
   top: 0 !important;
+  left: 0 !important;
   position: relative;
 }
 #calendar-wrapper .flatpickr-calendar::before, #calendar-wrapper .flatpickr-calendar::after {
@@ -301,7 +316,7 @@ main {
   line-height: 1.75em;
   border-radius: 10px;
   margin-bottom: 2px;
-  background-color: #e8d4fa;
+  background-color: #d4f5fa;
   position: relative;
   z-index: 10;
 }
@@ -320,7 +335,7 @@ main {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   z-index: 1;
-  background-color: #aa4cfb;
+  background-color: #4c8ffb;
 }
 #calendar-wrapper .flatpickr-day.startRange::after {
   content: "";
@@ -338,8 +353,8 @@ main {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   z-index: 10;
-  background-color: #aa4cfb;
-  box-shadow: -4px 0 0 #f4d6f9;
+  background-color: #4c8ffb;
+  box-shadow: -4px 0 0 #95defc;
 }
 #calendar-wrapper .flatpickr-day.endRange span {
   color: #fff;
@@ -352,11 +367,11 @@ main {
   border: none;
   border-radius: 0;
   z-index: 2;
-  background-color: #f4d6f9;
-  box-shadow: -4px 0 0 #f4d6f9;
+  background-color: #95defc;
+  box-shadow: -4px 0 0 #95defc;
 }
 #calendar-wrapper .flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+7) {
-  box-shadow: -4px 0 0 #f4d6f9 !important;
+  box-shadow: -4px 0 0 #95defc !important;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -369,7 +384,7 @@ main {
 .day-number {
   font-size: 1rem;
   font-weight: 700;
-  color: #7936a0;
+  color: #1c38a8;
 }
 
 .day-price {
@@ -381,6 +396,6 @@ main {
   left: 0;
   right: 0;
   line-height: 1em;
-  color: #8e69a8;
+  color: #447fd1;
 }
 /*# sourceMappingURL=style.css.map */

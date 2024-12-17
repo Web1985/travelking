@@ -1,4 +1,5 @@
-@use 'colors' as colors;
+@use "colors" as colors;
+@use "breakpoints" as breakpoint;
 
 .room-card {
     padding: 20px;
@@ -12,16 +13,19 @@
     margin-bottom: 20px;
     display: flex;
 
-    &.display-none{
-        display: none;
+    @media (max-width: breakpoint.$medium) {
+        flex-wrap: wrap;
     }
     .room-card--left {
         width: 30%;
         border-radius: 8px;
         flex-shrink: 0;
         min-height: 200px;
+        @media (max-width: breakpoint.$medium) {
+            width: 100%;
+        }
         img {
-            max-width: 100%;
+            width: 100%;
             border-radius: 8px;
         }
     }
@@ -30,6 +34,10 @@
         gap: 20px;
         flex: 1;
         padding: 20px 0;
+        @media (max-width: breakpoint.$small) {
+            width: 100%;
+            flex-direction: column;
+        }
     }
 
     .room-card--body {
@@ -37,29 +45,34 @@
         flex-direction: column;
         gap: 10px;
         width: 70%;
+        @media (max-width: breakpoint.$medium) {
+            width: 100%;
+        }
     }
-    .room-card--body--price{
+    .room-card--body--price {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        width: 30%;
         text-align: right;
+        width: 30%;
 
+        @media (max-width: breakpoint.$small) {
+            width: 100%;
+        }
     }
     .room-card--body--price--number {
         width: 100%;
         font-size: 1.8rem;
         font-weight: 600;
     }
-    .room-card--body--price--nights{
+    .room-card--body--price--nights {
         color: colors.$grey;
     }
-
 }
-.room-card--body--amenities{
+.room-card--body--amenities {
     display: flex;
     flex-wrap: wrap;
-    div{
+    div {
         padding: 5px;
         border-radius: 5px;
         color: colors.$grey_dark;
@@ -67,10 +80,12 @@
         margin: 0 5px 5px 0;
     }
 }
-.error-message{
+.error-message {
     padding: 20px 30px;
     background: #eee3f7;
     color: #40224c;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
 }
 .suspense-block {
     /* Placeholder for the image */
@@ -88,13 +103,13 @@
         background: linear-gradient(90deg, #e0e0e0 25%, #f4f4f4 50%, #e0e0e0 75%);
         animation: loading 1.5s infinite;
     }
-    .room-card--body--price{
+    .room-card--body--price {
         align-items: flex-end;
     }
-    .room-card--body--price--number.suspense-line{
+    .room-card--body--price--number.suspense-line {
         width: 50%;
     }
-    .room-card--body--amenities{
+    .room-card--body--amenities {
         min-height: 50px;
     }
     .suspense-line {
@@ -104,8 +119,6 @@
         border-radius: 4px;
         animation: loading 1.5s infinite;
     }
-
-
 }
 /* Animations */
 @keyframes loading {
