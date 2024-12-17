@@ -44,7 +44,7 @@ function precessDates(data) {
     i++;
   }
 
-  let showMonthsVar = window.innerWidt > 800 ? 2 : 1;
+  let showMonthsVar = window.innerWidth > 800 ? 2 : 1;
 
   const config = {
     dateFormat: "Y-m-d",
@@ -202,6 +202,9 @@ function roomCard(room, index = 0) {
                         </span>
                         <span class="room-card--body--price--nights ${suspens_line_classname}">
                           for ${nights} nights
+                        </span>
+                        <span class="room-card--body--price--book ${suspens_line_classname}">
+                          <button class="btn">Book</button>
                         </span>
                     </div>
                 </div>
