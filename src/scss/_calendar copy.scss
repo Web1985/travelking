@@ -57,8 +57,6 @@
         padding: 0 5px;
     }
     .flatpickr-calendar {
-        width: 100% !important;
-        max-width: 700px !important;
         box-sizing: content-box;
         padding: 30px;
         top: 0 !important;
@@ -84,10 +82,9 @@
         line-height: 1.75em;
         border-radius: 10px;
         margin-bottom: 2px;
-        width: 50px;
-    height: 50px;
         //padding: 5px;
        // box-sizing: content-box;
+        background-color: colors.$violet_ligthen;
         position: relative;
         z-index: 10;
 
@@ -112,10 +109,11 @@
 
             }
             .day-available{
-                background-color: colors.$green ;
+                background-color: #52ba51;
 
             }
 
+           // background-color: colors.$violet;
             &::after {
                 content: "";
                 width: 150%;
@@ -135,12 +133,12 @@
             border-bottom-left-radius: 0;
             z-index: 10;
             .day-available{
-                background-color: colors.$green;
+                background-color: #52ba51;
 
             }
             //background-color: colors.$violet;
-            -webkit-box-shadow: -4px 0 0 colors.$green_light;
-            box-shadow: -4px 0 0 colors.$green_light;
+            -webkit-box-shadow: -4px 0 0 colors.$violet_ligth;
+            box-shadow: -4px 0 0 colors.$violet_ligth;
             span {
                 color: #fff;
             }
@@ -155,13 +153,10 @@
             border: none;
             border-radius: 0;
             z-index: 2;
-            .day-available{
-                background-color: colors.$green_light;
+            background-color: colors.$violet_ligth;
 
-            }
-
-            -webkit-box-shadow: -4px 0 0 colors.$green_light;
-            box-shadow: -4px 0 0 colors.$green_light;
+            -webkit-box-shadow: -4px 0 0 colors.$violet_ligth;
+            box-shadow: -4px 0 0 colors.$violet_ligth;
         }
     }
 
@@ -170,8 +165,8 @@
             &.inRange,
             &.endRange {
                 &:nth-child(7n + 7) {
-                    -webkit-box-shadow: -4px 0 0 colors.$green_light !important;
-                    box-shadow: -4px 0 0 colors.$green_light !important;
+                    -webkit-box-shadow: -4px 0 0 colors.$violet_ligth !important;
+                    box-shadow: -4px 0 0 colors.$violet_ligth !important;
                     border-top-right-radius: 10px;
                     border-bottom-right-radius: 10px;
                 }

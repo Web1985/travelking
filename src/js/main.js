@@ -1,18 +1,18 @@
 import { CHECKINS_URL } from './Components/urls.js';
 import '../scss/style.scss';
 import { fetchDates } from './Components/FetchDates.js';
-import { precessDates } from './Components/ProcessDates.js';
+import { createCalendar } from './Components/CreateCalendar.js';
 
 /*
- ** Create Calendar
+ ** Open Calendar
  */
-async function createCalendar(url, target) {
+async function openCalendar(url, target) {
   const data = await fetchDates(url, target);
-  precessDates(data);
+  createCalendar(data);
 }
 
 /*
  ** onClick event for the "Check Availabilities" button
  */
 let btn = document.getElementById("check-availabilities--btn");
-btn.onclick = (event) => createCalendar(CHECKINS_URL, event.target);
+btn.onclick = (event) => openCalendar(CHECKINS_URL, event.target);
