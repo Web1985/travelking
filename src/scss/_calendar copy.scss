@@ -1,5 +1,4 @@
 @use "colors" as colors;
-@use "breakpoints" as breakpoints;
 
 #check-availabilities {
     box-sizing: border-box;
@@ -38,10 +37,7 @@
 }
 
 #calendar-wrapper {
-    top: 10%;
-    @media (max-width: breakpoints.$medium) {
-        top: 0;
-    }
+    top: 20%;
     left: 0;
     right: 0;
     position: fixed;
@@ -57,36 +53,16 @@
         left: 0;
         z-index: 100;
     }
-    .flatpickr-rContainer {
-        width: 100%;
-        .flatpickr-days {
-            width: 100% !important;
-            .dayContainer {
-                width: 50% !important;
-                max-width: 50%;
-                @media (max-width: breakpoints.$medium) {
-                    width: 100% !important;
-                    max-width: 100%;
-                }
-            }
-        }
-    }
     .dayContainer {
         padding: 0 5px;
     }
     .flatpickr-calendar {
-        width: 100% !important;
-        max-width: 900px !important;
         box-sizing: content-box;
         padding: 30px;
         top: 0 !important;
         left: 0 !important;
         position: relative;
-        box-sizing: border-box;
-        @media (max-width: breakpoints.$medium) {
-            min-height: 100vh;
 
-        }
         &::before,
         &::after {
             display: none;
@@ -101,16 +77,14 @@
         right: 20px;
     }
     .flatpickr-day {
-        font-size: 1.2rem;
-        font-weight: 400;
+        font-size: 1rem;
+        font-weight: 700;
         line-height: 1.75em;
         border-radius: 10px;
         margin-bottom: 2px;
-        width: 50px;
-        border: 2px solid #fff;
-        max-width: 100%;
-        height: 50px;
-
+        //padding: 5px;
+       // box-sizing: content-box;
+        background-color: colors.$violet_ligthen;
         position: relative;
         z-index: 10;
 
@@ -122,23 +96,34 @@
         &.inRange,
         &.startRange {
             border: none;
-            background-color: colors.$green_light;
-
             position: relative;
-            .day-available {
-                padding: 2px;
-                box-sizing: border-box;
+            .day--btn {
                 background: none;
-                .day-price {
-                    bottom: 6px;
-                }
             }
         }
         &.startRange {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
             z-index: 1;
-            background-color: colors.$green;
+            .price-position--low{
+
+            }
+            .day-available{
+                background-color: #52ba51;
+
+            }
+
+           // background-color: colors.$violet;
+            &::after {
+                content: "";
+                width: 150%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
             span {
                 color: #fff;
             }
@@ -147,9 +132,13 @@
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
             z-index: 10;
-            background-color: colors.$green;
-            -webkit-box-shadow: -4px 0 0 colors.$green_light;
-            box-shadow: -4px 0 0 colors.$green_light;
+            .day-available{
+                background-color: #52ba51;
+
+            }
+            //background-color: colors.$violet;
+            -webkit-box-shadow: -4px 0 0 colors.$violet_ligth;
+            box-shadow: -4px 0 0 colors.$violet_ligth;
             span {
                 color: #fff;
             }
@@ -164,18 +153,20 @@
             border: none;
             border-radius: 0;
             z-index: 2;
-            -webkit-box-shadow: -1px 0 0 colors.$green_light;
-            box-shadow: -1px 0 0 colors.$green_light;
+            background-color: colors.$violet_ligth;
+
+            -webkit-box-shadow: -4px 0 0 colors.$violet_ligth;
+            box-shadow: -4px 0 0 colors.$violet_ligth;
         }
     }
 
     .dayContainer:nth-child(n + 1) {
         .flatpickr-day {
             &.inRange,
-            &.endRange:not(.startRange) {
+            &.endRange {
                 &:nth-child(7n + 7) {
-                    -webkit-box-shadow: -4px 0 0 colors.$green_light !important;
-                    box-shadow: -4px 0 0 colors.$green_light !important;
+                    -webkit-box-shadow: -4px 0 0 colors.$violet_ligth !important;
+                    box-shadow: -4px 0 0 colors.$violet_ligth !important;
                     border-top-right-radius: 10px;
                     border-bottom-right-radius: 10px;
                 }
@@ -189,74 +180,48 @@
         }
     }
 }
-.day-available {
+.day-available{
     color: #fff;
-    display: flex;
+    display: flex
+;
     width: 100%;
     height: 100%;
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
-    &.price-position--low {
-        background-color: colors.$green_lighten;
+    &.price-position--low{
+        background-color: #c8f5c7;
 
-        .day-price {
+        .day-price{
             color: green;
         }
     }
 
-    &.price-position--high {
-        background-color: colors.$yellow_light;
-        .day-price {
+    &.price-position--high{
+        background-color: #f5edc7;
+        .day-price{
             color: red;
+
         }
     }
 }
 
 .day-number {
-    color: #092315;
+    font-size: 1rem;
+    font-weight: 700;
+    color:#092315;
+   // color: colors.$violet_dark;
 }
 
 .day-price {
     position: absolute;
     z-index: 1;
-    bottom: 4px;
+    bottom: 3px;
     font-size: 0.7rem;
     font-weight: 400;
     left: 0;
     right: 0;
     line-height: 1em;
     color: colors.$violet_dark_lighter;
-}
 
-.calendar--description {
-    text-align: left;
-    padding: 10px;
-}
-
-.calendar--price-description {
-    text-align: left;
-    display: flex;
-    padding: 10px;
-
-    div {
-        position: relative;
-        padding-left: 30px;
-        margin-right: 20px;
-        &::before {
-            content: "";
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            z-index: 1;
-            top: 2px;
-            left: 0;
-        }
-        &.low-price::before{
-            background-color: colors.$green_lighten;
-        }
-        &.high-price::before {
-            background-color: colors.$yellow_light;
-        }
-    }
 }
