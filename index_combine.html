@@ -10,7 +10,490 @@
             href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <style>
-            @import url(https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap);body{font-size:14px;line-height:1em;font-family:"Open Sans",sans-serif;font-optical-sizing:auto;font-style:normal;margin:0}h1{font-size:2rem;margin-top:0;line-height:1em}h2{font-size:1.7rem;margin-top:0;line-height:1em}p{font-size:1rem}a{text-decoration:none}.skip-link{display:none}.container{max-width:992px;padding:0 20px;margin:0 auto;width:100%;box-sizing:border-box}.display-flex{display:flex;justify-content:space-between;flex-wrap:wrap;align-items:center}#header{background-color:#4c8ffb;padding:20px 10px;position:sticky}.logo--link{font-size:2rem;letter-spacing:2px;color:#fff}main{box-sizing:border-box;display:flex;justify-content:center;min-height:calc(100vh - 174px);padding-bottom:40px}#footer{text-align:center;padding:50px 20px;background-color:#000;color:#fff;text-align:center}#footer p{margin:0}.room-card{padding:20px;background-color:#fff;border-radius:8px;-webkit-border-radius:8px;box-shadow:0 0 15px 0 rgba(0,0,0,.1);-webkit-box-shadow:0 0 15px 0 rgba(0,0,0,.1);gap:15px;animation:fade-in .5s ease-in-out;margin-bottom:20px;display:flex}@media (max-width:768px){.room-card{flex-wrap:wrap}}.room-card .room-card--left{width:30%;border-radius:8px;flex-shrink:0;min-height:200px}@media (max-width:768px){.room-card .room-card--left{width:100%}}.room-card .room-card--left img{width:100%;border-radius:8px}.room-card .room-card--right{display:flex;gap:20px;flex:1;padding:20px 0}@media (max-width:600px){.room-card .room-card--right{width:100%;flex-direction:column}}.room-card .room-card--body{display:flex;flex-direction:column;gap:10px;width:70%}@media (max-width:768px){.room-card .room-card--body{width:100%}}.room-card .room-card--body--price{display:flex;flex-direction:column;gap:10px;text-align:right;width:30%}@media (max-width:600px){.room-card .room-card--body--price{width:100%}}.room-card .room-card--body--price--number{width:100%;font-size:1.8rem;font-weight:600}.room-card .room-card--body--price--nights{color:#acacac}.room-card--body--amenities{display:flex;flex-wrap:wrap}.room-card--body--amenities div{padding:5px;border-radius:5px;color:#7c7b7b;background-color:#f2f2f2;margin:0 5px 5px 0}.error-message{padding:20px 30px;background:#d4f5fa;color:#1c38a8;border-radius:10px;-webkit-border-radius:10px}.suspense-block .room-card--left{background:linear-gradient(90deg,#e0e0e0 25%,#f4f4f4 50%,#e0e0e0 75%);animation:loading 1.5s infinite}.suspense-block .room-card--header{height:30px;width:70%;border-radius:4px}.suspense-block .room-card--header{background:linear-gradient(90deg,#e0e0e0 25%,#f4f4f4 50%,#e0e0e0 75%);animation:loading 1.5s infinite}.suspense-block .room-card--body--price{align-items:flex-end}.suspense-block .room-card--body--price--number.suspense-line{width:50%}.suspense-block .room-card--body--amenities{min-height:50px}.suspense-block .suspense-line{height:15px;width:100%;background:linear-gradient(90deg,#e0e0e0 25%,#f4f4f4 50%,#e0e0e0 75%);border-radius:4px;animation:loading 1.5s infinite}@keyframes loading{0%{background-position:-200px 0}100%{background-position:200px 0}}@keyframes fade-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}#check-availabilities{box-sizing:border-box;margin:50px auto;padding:40px 30px;border-radius:10px;-webkit-border-radius:10px;box-shadow:0 0 15px 0 rgba(0,0,0,.1);-webkit-box-shadow:0 0 15px 0 rgba(0,0,0,.1)}.check-availabilities--btn--wrapper{display:flex;justify-content:center}.btn{font-size:1.3rem;cursor:pointer;color:#fff;background-color:#000;border:none;padding:0 40px;margin:20px auto 0;height:60px;line-height:50px;text-align:center;border-radius:30px;-webkit-border-radius:30px;-webkit-transition:background .3s ease-in;-moz-transition:background .3s ease-in;-ms-transition:background .3s ease-in;-o-transition:background .3s ease-in;transition:background .3s ease-in}.btn:hover{background-color:#4c8ffb}#calendar-wrapper{top:20%;left:0;right:0;position:fixed;text-align:center;margin:auto}#calendar-wrapper:after{content:"";width:100%;height:100%;background-color:rgba(0,0,0,.3);position:fixed;top:0;left:0;z-index:100}#calendar-wrapper .dayContainer{padding:0 5px}#calendar-wrapper .flatpickr-calendar{box-sizing:content-box;padding:30px;top:0!important;left:0!important;position:relative}#calendar-wrapper .flatpickr-calendar::after,#calendar-wrapper .flatpickr-calendar::before{display:none}#calendar-wrapper .flatpickr-prev-month{top:27px;left:20px}#calendar-wrapper .flatpickr-next-month{top:27px;right:20px}#calendar-wrapper .flatpickr-day{font-size:1rem;font-weight:700;line-height:1.75em;border-radius:10px;margin-bottom:2px;background-color:#d4f5fa;position:relative;z-index:10}#calendar-wrapper .flatpickr-day.flatpickr-disabled{background:#f2f2f2;color:#acacac}#calendar-wrapper .flatpickr-day.endRange,#calendar-wrapper .flatpickr-day.inRange,#calendar-wrapper .flatpickr-day.startRange{border:none;position:relative}#calendar-wrapper .flatpickr-day.endRange .day--btn,#calendar-wrapper .flatpickr-day.inRange .day--btn,#calendar-wrapper .flatpickr-day.startRange .day--btn{background:0 0}#calendar-wrapper .flatpickr-day.startRange{border-top-right-radius:0;border-bottom-right-radius:0;z-index:1;background-color:#4c8ffb}#calendar-wrapper .flatpickr-day.startRange::after{content:"";width:150%;height:100%;position:absolute;top:0;left:0;z-index:1}#calendar-wrapper .flatpickr-day.startRange span{color:#fff}#calendar-wrapper .flatpickr-day.endRange{border-top-left-radius:0;border-bottom-left-radius:0;z-index:10;background-color:#4c8ffb;-webkit-box-shadow:-4px 0 0 #95defc;box-shadow:-4px 0 0 #95defc}#calendar-wrapper .flatpickr-day.endRange span{color:#fff}#calendar-wrapper .flatpickr-day.endRange.startRange{border-radius:10px;-webkit-box-shadow:none!important;box-shadow:none!important}#calendar-wrapper .flatpickr-day.inRange{border:none;border-radius:0;z-index:2;background-color:#95defc;-webkit-box-shadow:-4px 0 0 #95defc;box-shadow:-4px 0 0 #95defc}#calendar-wrapper .dayContainer:nth-child(n+1) .flatpickr-day.endRange:nth-child(7n+7),#calendar-wrapper .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+7){-webkit-box-shadow:-4px 0 0 #95defc!important;box-shadow:-4px 0 0 #95defc!important;border-top-right-radius:10px;border-bottom-right-radius:10px}#calendar-wrapper .dayContainer:nth-child(n+1) .flatpickr-day.endRange:nth-child(7n+1),#calendar-wrapper .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+1){-webkit-box-shadow:none!important;box-shadow:none!important;border-top-left-radius:10px;border-bottom-left-radius:10px}.day-number{font-size:1rem;font-weight:700;color:#1c38a8}.day-price{position:absolute;z-index:1;bottom:3px;font-size:.7rem;font-weight:400;left:0;right:0;line-height:1em;color:#447fd1}
+            /*!**************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/style.scss ***!
+  \**************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap);
+/*!******************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/scss/style.scss (1) ***!
+  \******************************************************************************************************************/
+body {
+  font-size: 14px;
+  line-height: 1em;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-top: 0;
+  line-height: 1em;
+}
+
+h2 {
+  font-size: 1.7rem;
+  margin-top: 0;
+  line-height: 1em;
+}
+
+p {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.skip-link {
+  display: none;
+}
+
+.container {
+  max-width: 992px;
+  padding: 0 20px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.display-flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#header {
+  background-color: #4c8ffb;
+  padding: 20px 10px;
+  position: sticky;
+}
+
+.logo--link {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+main {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 174px);
+  padding-bottom: 40px;
+}
+
+#footer {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+}
+#footer p {
+  margin: 0;
+}
+
+.room-card {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.1);
+  gap: 15px;
+  animation: fade-in 0.5s ease-in-out;
+  margin-bottom: 20px;
+  display: flex;
+}
+@media (max-width: 768px) {
+  .room-card {
+    flex-wrap: wrap;
+  }
+}
+.room-card .room-card--left {
+  width: 30%;
+  border-radius: 8px;
+  flex-shrink: 0;
+  min-height: 200px;
+}
+@media (max-width: 768px) {
+  .room-card .room-card--left {
+    width: 100%;
+  }
+}
+.room-card .room-card--left img {
+  width: 100%;
+  border-radius: 8px;
+}
+.room-card .room-card--right {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  padding: 20px 0;
+}
+@media (max-width: 600px) {
+  .room-card .room-card--right {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+.room-card .room-card--body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 70%;
+}
+@media (max-width: 768px) {
+  .room-card .room-card--body {
+    width: 100%;
+  }
+}
+.room-card .room-card--body--price {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: right;
+  width: 30%;
+}
+@media (max-width: 600px) {
+  .room-card .room-card--body--price {
+    width: 100%;
+  }
+}
+.room-card .room-card--body--price--number {
+  width: 100%;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.room-card .room-card--body--price--nights {
+  color: #acacac;
+}
+
+.room-card--body--amenities {
+  display: flex;
+  flex-wrap: wrap;
+}
+.room-card--body--amenities div {
+  padding: 5px;
+  border-radius: 5px;
+  color: #7c7b7b;
+  background-color: #f2f2f2;
+  margin: 0 5px 5px 0;
+}
+
+.error-message {
+  padding: 20px 30px;
+  background: #d4f5fa;
+  color: #1c38a8;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
+
+.suspense-block {
+  /* Placeholder for the image */
+}
+.suspense-block .room-card--left {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f4f4f4 50%, #e0e0e0 75%);
+  animation: loading 1.5s infinite;
+}
+.suspense-block .room-card--header {
+  height: 30px;
+  width: 70%;
+  border-radius: 4px;
+}
+.suspense-block .room-card--header {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f4f4f4 50%, #e0e0e0 75%);
+  animation: loading 1.5s infinite;
+}
+.suspense-block .room-card--body--price {
+  align-items: flex-end;
+}
+.suspense-block .room-card--body--price--number.suspense-line {
+  width: 50%;
+}
+.suspense-block .room-card--body--amenities {
+  min-height: 50px;
+}
+.suspense-block .suspense-line {
+  height: 15px;
+  width: 100%;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f4f4f4 50%, #e0e0e0 75%);
+  border-radius: 4px;
+  animation: loading 1.5s infinite;
+}
+
+/* Animations */
+@keyframes loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#check-availabilities {
+  box-sizing: border-box;
+  margin: 50px auto;
+  padding: 40px 30px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+.check-availabilities--btn--wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  padding: 0 40px;
+  margin: 20px auto 0;
+  height: 60px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -webkit-transition: background 300ms ease-in;
+  -moz-transition: background 300ms ease-in;
+  -ms-transition: background 300ms ease-in;
+  -o-transition: background 300ms ease-in;
+  transition: background 300ms ease-in;
+}
+.btn:hover {
+  background-color: #4c8ffb;
+}
+
+#calendar-wrapper {
+  top: 10%;
+  left: 0;
+  right: 0;
+  position: fixed;
+  text-align: center;
+  margin: auto;
+}
+@media (max-width: 768px) {
+  #calendar-wrapper {
+    top: 0;
+  }
+}
+#calendar-wrapper:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+#calendar-wrapper .flatpickr-rContainer {
+  width: 100%;
+}
+#calendar-wrapper .flatpickr-rContainer .flatpickr-days {
+  width: 100% !important;
+}
+#calendar-wrapper .flatpickr-rContainer .flatpickr-days .dayContainer {
+  width: 50% !important;
+  max-width: 50%;
+}
+@media (max-width: 768px) {
+  #calendar-wrapper .flatpickr-rContainer .flatpickr-days .dayContainer {
+    width: 100% !important;
+    max-width: 100%;
+  }
+}
+#calendar-wrapper .dayContainer {
+  padding: 0 5px;
+}
+#calendar-wrapper .flatpickr-calendar {
+  width: 100% !important;
+  max-width: 900px !important;
+  box-sizing: content-box;
+  padding: 30px;
+  top: 0 !important;
+  left: 0 !important;
+  position: relative;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  #calendar-wrapper .flatpickr-calendar {
+    min-height: 100vh;
+  }
+}
+#calendar-wrapper .flatpickr-calendar::before, #calendar-wrapper .flatpickr-calendar::after {
+  display: none;
+}
+#calendar-wrapper .flatpickr-prev-month {
+  top: 27px;
+  left: 20px;
+}
+#calendar-wrapper .flatpickr-next-month {
+  top: 27px;
+  right: 20px;
+}
+#calendar-wrapper .flatpickr-day {
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.75em;
+  border-radius: 10px;
+  margin-bottom: 2px;
+  width: 50px;
+  border: 2px solid #fff;
+  max-width: 100%;
+  height: 50px;
+  position: relative;
+  z-index: 10;
+}
+#calendar-wrapper .flatpickr-day.flatpickr-disabled {
+  background: #f2f2f2;
+  color: #acacac;
+}
+#calendar-wrapper .flatpickr-day.endRange, #calendar-wrapper .flatpickr-day.inRange, #calendar-wrapper .flatpickr-day.startRange {
+  border: none;
+  background-color: #baee71;
+  position: relative;
+}
+#calendar-wrapper .flatpickr-day.endRange .day-available, #calendar-wrapper .flatpickr-day.inRange .day-available, #calendar-wrapper .flatpickr-day.startRange .day-available {
+  padding: 2px;
+  box-sizing: border-box;
+  background: none;
+}
+#calendar-wrapper .flatpickr-day.endRange .day-available .day-price, #calendar-wrapper .flatpickr-day.inRange .day-available .day-price, #calendar-wrapper .flatpickr-day.startRange .day-available .day-price {
+  bottom: 6px;
+}
+#calendar-wrapper .flatpickr-day.startRange {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: 1;
+  background-color: #52ba51;
+}
+#calendar-wrapper .flatpickr-day.startRange span {
+  color: #fff;
+}
+#calendar-wrapper .flatpickr-day.endRange {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  z-index: 10;
+  background-color: #52ba51;
+  -webkit-box-shadow: -4px 0 0 #baee71;
+  box-shadow: -4px 0 0 #baee71;
+}
+#calendar-wrapper .flatpickr-day.endRange span {
+  color: #fff;
+}
+#calendar-wrapper .flatpickr-day.endRange.startRange {
+  border-radius: 10px;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+#calendar-wrapper .flatpickr-day.inRange {
+  border: none;
+  border-radius: 0;
+  z-index: 2;
+  -webkit-box-shadow: -1px 0 0 #baee71;
+  box-shadow: -1px 0 0 #baee71;
+}
+#calendar-wrapper .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+7), #calendar-wrapper .dayContainer:nth-child(n+1) .flatpickr-day.endRange:not(.startRange):nth-child(7n+7) {
+  -webkit-box-shadow: -4px 0 0 #baee71 !important;
+  box-shadow: -4px 0 0 #baee71 !important;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+#calendar-wrapper .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+1), #calendar-wrapper .dayContainer:nth-child(n+1) .flatpickr-day.endRange:not(.startRange):nth-child(7n+1) {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.day-available {
+  color: #fff;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+.day-available.price-position--low {
+  background-color: #c8f5c7;
+}
+.day-available.price-position--low .day-price {
+  color: green;
+}
+.day-available.price-position--high {
+  background-color: #f5edc7;
+}
+.day-available.price-position--high .day-price {
+  color: red;
+}
+
+.day-number {
+  color: #092315;
+}
+
+.day-price {
+  position: absolute;
+  z-index: 1;
+  bottom: 4px;
+  font-size: 0.7rem;
+  font-weight: 400;
+  left: 0;
+  right: 0;
+  line-height: 1em;
+  color: #447fd1;
+}
+
+.calendar--description {
+  text-align: left;
+  padding: 10px;
+}
+
+.calendar--price-description {
+  text-align: left;
+  display: flex;
+  padding: 10px;
+}
+.calendar--price-description div {
+  position: relative;
+  padding-left: 30px;
+  margin-right: 20px;
+}
+.calendar--price-description div::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  z-index: 1;
+  top: 2px;
+  left: 0;
+}
+.calendar--price-description div.low-price::before {
+  background-color: #c8f5c7;
+}
+.calendar--price-description div.high-price::before {
+  background-color: #f5edc7;
+}
+
         </style>
     </head>
     <body>
@@ -47,39 +530,7 @@
         <footer id="footer">
             <p>&copy; 2024 Travelking Test Website. All rights reserved.</p>
         </footer>
-        <script async>
-            let URL="https://api.travelcircus.net/hotels/17080/",CHECKINS_URL=URL+`checkins?E&party=%7B%22adults%22:2,%22childre
-n%22:%5B%5D%7D&domain=de&date_start=2025-01-01&date_end=2025-06-31`;function quoteeUrl(e,t){return URL+`quotes?locale=de_DE&checkin=${e}
-&checkout=${t}&party=%7B"adults":2,"children":[]%7D&domain=de`}async function fetchDates(e,t){var a=t.innerText;t.innerText="loading...";try{var n=await fetch(e);if(n.ok)return await n.json();throw new Error("HTTP error! status: "+n.status)}catch(e){console.log("Error: "+e)}finally{t.innerText=a}}function precessDates(e){var t,a=[];let s={},n=0;for(t of e._embedded.hotel_availabilities)a[n]=t.date,s[t.date]=t,n++;e=800<window.innerWidth?2:1;flatpickr("#calendar",{dateFormat:"Y-m-d",closeOnSelect:!1,mode:"range",showMonths:e,enable:a,onDayCreate:function(e,t,a,n){var r,o=new Intl.DateTimeFormat("en-CA").format(n.dateObj);s[o]&&(r=n.innerHTML,n.innerHTML=`
-        <span class='day-number'>${r}</span>
-          <span class='day-price'>${s[o].price}</span>
-          `)},onOpen:(e,t,a)=>{var n=a.calendarContainer,r=document.createElement("div"),r=(r.id="calendar-wrapper",n.parentNode.insertBefore(r,n),r.appendChild(n),document.createElement("button"));r.textContent="Apply",r.className="apply-button btn",n.appendChild(r),r.addEventListener("click",()=>{a.close();var e=a.input.value;displayRooms(e.split(" to ")[0],e.split(" to ")[1])})},onClose:function(e,t,a){document.getElementById("calendar-wrapper").remove()}}).open()}async function createCalendar(e,t){precessDates(await fetchDates(e,t))}async function fetchRooms(e,a){e=quoteeUrl(e,a);let t=document.getElementById("section--rooms");t.innerHTML=roomCard();var a=document.getElementById("section--message"),n=document.querySelectorAll(".room-card");try{a.innerHTML="";var r=await fetch(e);if(r.ok)return(await r.json())._embedded.hotel_quotes;throw new Error("HTTP error! status: "+r.status)}catch(e){let t=document.getElementById("section--rooms");t.innerHTML=null,a.innerHTML=`<div class="error-message">
-    There are no rooms available for the selected period. Please try another dates.</div>`,console.log("Error: "+e)}finally{n.forEach(e=>{e.classList.remove("suspense-block")})}}async function displayRooms(e,t){e=await fetchRooms(e,t);let a=document.getElementById("section--rooms");a.innerHTML=null,e&&e.map((e,t)=>{e=roomCard(e,t);a.innerHTML+=e})}function roomCard(e,t=0){let a="suspense-block",n="suspense-line",r="",o="",s="",c="",i="";return e&&(a="",n="",r=e.description,c=e.full_formatted_price,i=e.fullPriceBreakdown.nights,o=`<img src="${e._embedded.pictures[0].offer_teaser_ncol}"
-     alt="${e._embedded.pictures[0].description}" loading="lazy" />`,e._embedded.amenities)&&(s=e._embedded.amenities.reduce((e,t)=>e+`<div>${t.description}</div>`,"")),`
-    <article id="section--rooms--${t}" class="room-card ${a}">
-                <div class="room-card--left">
-                    ${o}
-                </div>
-                <div class="room-card--right">
-                    <div class="room-card--body">
-                        <h2 class="room-card--header">${r}</h2>
-                        <div class="room-card--body--amenities ${n}">
-                        ${s}
-                        </div>
-                    </div>
-                    <div class="room-card--body--price">
-                        <span class="room-card--body--price--number ${n}">
-                          ${c}
-                        </span>
-                        <span class="room-card--body--price--nights ${n}">
-                          for ${i} nights
-                        </span>
-                        <span class="room-card--body--price--book ${n}">
-                          <button class="btn">Book</button>
-                        </span>
-                    </div>
-                </div>
-            </article>`}let btn=document.getElementById("check-availabilities--btn");btn.onclick=e=>createCalendar(CHECKINS_URL,e.target);
-</script>
+        <script async>/*! For license information please see bundle.js.LICENSE.txt */
+            (()=>{"use strict";var __webpack_modules__={"./src/scss/style.scss":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://travelking/./src/scss/style.scss?")},"./src/js/Components/DisplayRooms.js":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{eval('__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   displayRooms: () => (/* binding */ displayRooms)\n/* harmony export */ });\n/* harmony import */ var _FetchRooms_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FetchRooms.js */ "./src/js/Components/FetchRooms.js");\n/* harmony import */ var _RoomCard_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RoomCard.js */ "./src/js/Components/RoomCard.js");\n\n\n\n/**\n * Displays rooms on the page based on the fetched data.\n * @param {string} start_date - The start date for fetching rooms.\n * @param {string} end_date - The end date for fetching rooms.\n */\nasync function displayRooms(start_date, end_date) {\n  const section_rooms = document.getElementById("section--rooms");\n  const message = document.getElementById("section--message");\n  try {\n    const rooms = await (0,_FetchRooms_js__WEBPACK_IMPORTED_MODULE_0__.fetchRooms)(start_date, end_date);\n    section_rooms.innerHTML = null;\n    if (!rooms) {\n      throw new Error("there are no any available rooms");\n    } else {\n      rooms.map((room, index) => {\n        let room_card = (0,_RoomCard_js__WEBPACK_IMPORTED_MODULE_1__.roomCard)(room, index);\n        section_rooms.innerHTML += room_card;\n      });\n    }\n  } catch (error) {\n    handleError(section_rooms, message, error);\n  }\n}\n\n/**\n * Handle errors by updating the DOM and logging the error.\n * @param {HTMLElement} sectionRooms - The section for displaying room cards.\n * @param {HTMLElement} message - The element for displaying error messages.\n * @param {Error} error - The caught error.\n */\nfunction handleError(sectionRooms, message, error) {\n  sectionRooms.innerHTML = ""; // Clear the room section\n  message.innerHTML = `\n    <div class="error-message">\n      There are no rooms available for the selected period. Please try other dates.\n    </div>`;\n  console.error("Error fetching rooms:", error);\n}\n\n\n//# sourceURL=webpack://travelking/./src/js/Components/DisplayRooms.js?')},"./src/js/Components/FetchDates.js":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{eval('__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   fetchDates: () => (/* binding */ fetchDates)\n/* harmony export */ });\n/**\n * Fetches data from the given URL and handles loading state for the target element.\n * @param {string} url - The API endpoint to fetch data from.\n * @param {HTMLElement} target - The target element whose inner text reflects the loading state.\n * @returns {Promise<Object|null>} The fetched data in JSON format, or null in case of an error.\n */\nasync function fetchDates(url, target) {\n  if (!target || !(target instanceof HTMLElement)) {\n    console.error("Invalid target element provided.");\n    return null;\n  }\n\n  const originalText = target.innerText;\n  target.innerText = "Loading...";\n\n  try {\n    const response = await fetch(url);\n\n    if (!response.ok) {\n      throw new Error(`HTTP error! status: ${response.status}`);\n    }\n\n    return await response.json();\n  } catch (error) {\n    console.error("Error fetching data:", error);\n    return null;\n  } finally {\n    target.innerText = originalText;\n  }\n}\n\n\n//# sourceURL=webpack://travelking/./src/js/Components/FetchDates.js?')},"./src/js/Components/FetchRooms.js":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{eval('__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   fetchRooms: () => (/* binding */ fetchRooms)\n/* harmony export */ });\n/* harmony import */ var _urls_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./urls.js */ "./src/js/Components/urls.js");\n/* harmony import */ var _RoomCard_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RoomCard.js */ "./src/js/Components/RoomCard.js");\n\n\n\n/**\n * Fetch available rooms from API for the selected dates.\n * @param {string} start_date - The start date of the booking period.\n * @param {string} end_date - The end date of the booking period.\n * @returns {Promise<Array|void>} List of available hotel quotes or undefined in case of an error.\n */\nasync function fetchRooms(start_date, end_date) {\n  const url = (0,_urls_js__WEBPACK_IMPORTED_MODULE_0__.quoteeUrl)(start_date, end_date);\n  const sectionRooms = document.getElementById("section--rooms");\n  const message = document.getElementById("section--message");\n\n  // Display loading state\n  sectionRooms.innerHTML = (0,_RoomCard_js__WEBPACK_IMPORTED_MODULE_1__.roomCard)();\n  const roomCards = document.querySelectorAll(".room-card");\n\n  try {\n    message.innerHTML = "";\n    const response = await fetch(url);\n    if (!response.ok) {\n      throw new Error(`HTTP error! status: ${response.status}`);\n    }\n\n    const { _embedded: { hotel_quotes } = {} } = await response.json();\n    return hotel_quotes || [];\n  } catch (error) {\n    console.error("Error fetching rooms:", error);\n  } finally {\n    removeSuspenseState(roomCards);\n  }\n}\n\n/**\n * Remove the suspense state from room cards.\n * @param {NodeListOf<Element>} roomCards - NodeList of room card elements.\n */\nfunction removeSuspenseState(roomCards) {\n  roomCards.forEach((card) => card.classList.remove("suspense-block"));\n}\n\n\n//# sourceURL=webpack://travelking/./src/js/Components/FetchRooms.js?')},"./src/js/Components/RoomCard.js":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{eval('__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   roomCard: () => (/* binding */ roomCard)\n/* harmony export */ });\n/**\n * Generates a room card template with optional suspense effect.\n * @param {Object} [room] - Room data (optional for suspense effect).\n * @param {number} [index=0] - Index of the room card (for unique IDs).\n * @returns {string} HTML string for the room card.\n */\nfunction roomCard(room = null, index = 0) {\n  const suspenseClass = room ? "" : "suspense-block";\n  const suspenseLineClass = room ? "" : "suspense-line";\n\n  const img = room?.["_embedded"]?.["pictures"]?.[0]\n    ? `<img src="${room._embedded.pictures[0].offer_teaser_ncol}"\n       alt="${room._embedded.pictures[0].description}" loading="lazy" />`\n    : "";\n\n  const services = room?._embedded?.amenities\n    ? room._embedded.amenities\n        .map((item) => `<div>${item.description}</div>`)\n        .join("")\n    : "";\n\n  const description = room?.description || "";\n  const price = room?.full_formatted_price || "";\n  const nights = room?.fullPriceBreakdown?.nights || "";\n\n  return `\n    <article id="section--rooms--${index}" class="room-card ${suspenseClass}">\n      <div class="room-card--left">\n        ${img}\n      </div>\n      <div class="room-card--right">\n        <div class="room-card--body">\n          <h2 class="room-card--header">${description}</h2>\n          <div class="room-card--body--amenities ${suspenseLineClass}">\n            ${services}\n          </div>\n        </div>\n        <div class="room-card--body--price">\n          <span class="room-card--body--price--number ${suspenseLineClass}">\n            ${price}\n          </span>\n          <span class="room-card--body--price--nights ${suspenseLineClass}">\n            for ${nights} nights\n          </span>\n          <span class="room-card--body--price--book ${suspenseLineClass}">\n            <button class="btn">Book</button>\n          </span>\n        </div>\n      </div>\n    </article>`;\n}\n\n\n//# sourceURL=webpack://travelking/./src/js/Components/RoomCard.js?')},"./src/js/Components/createCalendar.js":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{eval('__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   createCalendar: () => (/* binding */ createCalendar)\n/* harmony export */ });\n/* harmony import */ var _DisplayRooms_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DisplayRooms.js */ "./src/js/Components/DisplayRooms.js");\n/* harmony import */ var _onCalendarOpen_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./onCalendarOpen.js */ "./src/js/Components/onCalendarOpen.js");\n\n\n\n/**\n * Create a calendar with available dates.\n * @param {Object} data - Data containing hotel availabilities.\n */\nfunction createCalendar(data) {\n  const enable_dates = data._embedded.hotel_availabilities.map(item => item.date);\n  const enable_dates_obj = Object.fromEntries(\n    data._embedded.hotel_availabilities.map(item => [item.date, item])\n  );\n\n  const showMonthsVar = window.innerWidth > 800 ? 2 : 1;\n\n  const config = {\n    dateFormat: "Y-m-d",\n    closeOnSelect: false,\n    minDate: "today",\n    maxDate: new Date().fp_incr(188),\n    mode: "range",\n    showMonths: showMonthsVar,\n    enable: enable_dates,\n    onDayCreate: (dObj, dStr, fp, dayElem) => {\n      const formattedDate = new Intl.DateTimeFormat("en-CA").format(dayElem.dateObj);\n      const availability = enable_dates_obj[formattedDate];\n\n      if (availability) {\n        dayElem.innerHTML = `\n          <span class=\'day-available price-position--${availability.price_position}\'>\n            <span class=\'day-number\'>${dayElem.innerHTML}</span>\n            <span class=\'day-price\'>${availability.price} €</span>\n          </span>`;\n      }\n    },\n    onOpen: (selectedDates, dateStr, instance) => {\n      (0,_onCalendarOpen_js__WEBPACK_IMPORTED_MODULE_1__.onCalendarOpen)(instance);\n    },\n    onClose: () => document.getElementById("calendar-wrapper")?.remove()\n  };\n\n  const calendar = flatpickr("#calendar", config);\n  calendar.open();\n}\n\n\n//# sourceURL=webpack://travelking/./src/js/Components/createCalendar.js?')},"./src/js/Components/onCalendarOpen.js":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{eval('__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   onCalendarOpen: () => (/* binding */ onCalendarOpen)\n/* harmony export */ });\n/* harmony import */ var _DisplayRooms_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DisplayRooms.js */ "./src/js/Components/DisplayRooms.js");\n\n\nfunction onCalendarOpen(instance) {\n\n  const calendar_container = instance.calendarContainer;\n  const wrapper = createElementWithClass("div", "calendar-wrapper", {\n    id: "calendar-wrapper",\n  });\n  calendar_container.parentNode.insertBefore(wrapper, calendar_container);\n  wrapper.appendChild(calendar_container);\n\n  const description = createElementWithClass("div", "calendar--description", {\n    textContent: "Prices are average prices per 2 persons per day.",\n  });\n  calendar_container.appendChild(description);\n\n  const price_description = createElementWithClass(\n    "div",\n    "calendar--price-description",\n    {\n      innerHTML: `\n        <div class="low-price">€</div>\n        <div class="high-price">€€</div>`,\n    }\n  );\n  calendar_container.appendChild(price_description);\n\n  const apply_button = createElementWithClass("button", "apply-button btn", {\n    textContent: "Apply",\n  });\n  calendar_container.appendChild(apply_button);\n\n  apply_button.addEventListener("click", () => {\n    instance.close();\n    const [start_date, end_date] = instance.input.value.split(" to ");\n    (0,_DisplayRooms_js__WEBPACK_IMPORTED_MODULE_0__.displayRooms)(start_date, end_date);\n  });\n\n  instance.config.onChange.push(function() {\n    const selected = calendar_container.querySelectorAll(\'.inRange\');\n    selected.forEach(child => {\n        if(child.classList.contains(\'flatpickr-disabled\')){\n            instance.clear();\n        }\n      });\n  } );\n}\n\n\n/**\n * Helper function to create an element with a class and properties.\n * @param {string} tagName - HTML tag name.\n * @param {string} className - Class name(s) for the element.\n * @param {Object} [props={}] - Additional properties for the element.\n * @returns {HTMLElement} The created element.\n */\nfunction createElementWithClass(tagName, className, props = {}) {\n    const element = document.createElement(tagName);\n    element.className = className;\n    Object.assign(element, props);\n    return element;\n  }\n\n//# sourceURL=webpack://travelking/./src/js/Components/onCalendarOpen.js?')},"./src/js/Components/urls.js":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{eval('__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   CHECKINS_URL: () => (/* binding */ CHECKINS_URL),\n/* harmony export */   URL: () => (/* binding */ URL),\n/* harmony export */   quoteeUrl: () => (/* binding */ quoteeUrl)\n/* harmony export */ });\nconst URL = "https://api.travelcircus.net/hotels/17080/";\n\nconst CHECKINS_URL = `${URL}checkins?E&party=%7B%22adults%22:2,%22childre\nn%22:%5B%5D%7D&domain=de&date_start=2025-01-01&date_end=2025-06-31`;\n\nfunction quoteeUrl(start_date, end_date) {\n  return `${URL}quotes?locale=de_DE&checkin=${start_date}\n&checkout=${end_date}&party=%7B"adults":2,"children":[]%7D&domain=de`;\n}\n\n\n//# sourceURL=webpack://travelking/./src/js/Components/urls.js?')},"./src/js/main.js":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{eval('__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Components_urls_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Components/urls.js */ "./src/js/Components/urls.js");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/style.scss */ "./src/scss/style.scss");\n/* harmony import */ var _Components_FetchDates_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Components/FetchDates.js */ "./src/js/Components/FetchDates.js");\n/* harmony import */ var _Components_createCalendar_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components/createCalendar.js */ "./src/js/Components/createCalendar.js");\n\n\n\n\n\n/*\n ** Open Calendar\n */\nasync function openCalendar(url, target) {\n  const data = await (0,_Components_FetchDates_js__WEBPACK_IMPORTED_MODULE_2__.fetchDates)(url, target);\n  (0,_Components_createCalendar_js__WEBPACK_IMPORTED_MODULE_3__.createCalendar)(data);\n}\n\n/*\n ** onClick event for the "Check Availabilities" button\n */\nlet btn = document.getElementById("check-availabilities--btn");\nbtn.onclick = (event) => openCalendar(_Components_urls_js__WEBPACK_IMPORTED_MODULE_0__.CHECKINS_URL, event.target);\n\n\n//# sourceURL=webpack://travelking/./src/js/main.js?')}},__webpack_module_cache__={};function __webpack_require__(e){var n=__webpack_module_cache__[e];if(void 0!==n)return n.exports;var r=__webpack_module_cache__[e]={exports:{}};return __webpack_modules__[e](r,r.exports,__webpack_require__),r.exports}__webpack_require__.d=(e,n)=>{for(var r in n)__webpack_require__.o(n,r)&&!__webpack_require__.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:n[r]})},__webpack_require__.o=(e,n)=>Object.prototype.hasOwnProperty.call(e,n),__webpack_require__.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var __webpack_exports__=__webpack_require__("./src/js/main.js")})();</script>
     </body>
 </html>
