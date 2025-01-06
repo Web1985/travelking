@@ -1,4 +1,4 @@
-export function onDayCreate (dayElem) {
+export function onDayCreate (dayElem,enable_dates_obj) {
     const formattedDate = new Intl.DateTimeFormat("en-CA").format(dayElem.dateObj);
     const availability = enable_dates_obj[formattedDate];
 

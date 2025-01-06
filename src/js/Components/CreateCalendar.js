@@ -24,10 +24,9 @@ export function createCalendar(data) {
     showMonths: showMonthsVar,
     enable: enable_dates,
     onDayCreate: (dObj, dStr, fp, dayElem) => {
-      onDayCreate(dayElem);
+      onDayCreate(dayElem,enable_dates_obj);
     },
     onOpen: (selectedDates, dateStr, instance) => {
-
       onCalendarOpen(instance);
     },
 
