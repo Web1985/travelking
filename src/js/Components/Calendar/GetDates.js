@@ -4,7 +4,7 @@
  * @param {HTMLElement} target - The target element whose inner text reflects the loading state.
  * @returns {Promise<Object|null>} The fetched data in JSON format, or null in case of an error.
  */
-export async function fetchDates(url, target) {
+export async function getDates(url, target) {
   if (!target || !(target instanceof HTMLElement)) {
     console.error("Invalid target element provided.");
     return null;

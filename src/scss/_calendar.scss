@@ -201,14 +201,14 @@
         background-color: colors.$green_lighten;
 
         .day-price {
-            color: green;
+            color: colors.$green_dark;
         }
     }
 
     &.price-position--high {
         background-color: colors.$yellow_light;
         .day-price {
-            color: red;
+            color: colors.$red;
         }
     }
 }

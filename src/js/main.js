@@ -1,13 +1,14 @@
-import { CHECKINS_URL } from './Components/urls.js';
+import { CHECKINS_URL } from './utils/urls.js';
+import { getDates } from './Components/Calendar/GetDates.js';
+import { createCalendar } from './Components/Calendar/CreateCalendar.js';
+
 import '../scss/style.scss';
-import { fetchDates } from './Components/FetchDates.js';
-import { createCalendar } from './Components/CreateCalendar.js';
 
 /*
  ** Open Calendar
  */
 async function openCalendar(url, target) {
-  const data = await fetchDates(url, target);
+  const data = await getDates(url, target);
   createCalendar(data);
 }
 

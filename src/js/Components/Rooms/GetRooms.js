@@ -1,5 +1,6 @@
-import { quoteeUrl } from "./urls.js";
+import { quoteeUrl } from "../../utils/urls.js";
 import { roomCard } from "./RoomCard.js";
+import { removeSuspenseState } from "../../utils/removeSuspenseState.js";
 
 /**
  * Fetch available rooms from API for the selected dates.
@@ -7,7 +8,7 @@ import { roomCard } from "./RoomCard.js";
  * @param {string} end_date - The end date of the booking period.
  * @returns {Promise<Array|void>} List of available hotel quotes or undefined in case of an error.
  */
-export async function fetchRooms(start_date, end_date) {
+export async function getRooms(start_date, end_date) {
   const url = quoteeUrl(start_date, end_date);
   const sectionRooms = document.getElementById("section--rooms");
   const message = document.getElementById("section--message");
@@ -30,12 +31,4 @@ export async function fetchRooms(start_date, end_date) {
   } finally {
     removeSuspenseState(roomCards);
   }
-}
-
-/**
- * Remove the suspense state from room cards.
- * @param {NodeListOf<Element>} roomCards - NodeList of room card elements.
- */
-function removeSuspenseState(roomCards) {
-  roomCards.forEach((card) => card.classList.remove("suspense-block"));
 }

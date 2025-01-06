@@ -1,5 +1,9 @@
-import { onCalendarOpen } from "./onCalendarOpen.js";
-import { onDayCreate } from "./onDayCreate.js";
+import { displayRooms } from "../Rooms/DisplayRooms.js";
+import { createCalendarWrapper } from "./configs/createCalendarWrapper.js";
+import { addCalendarDescription } from "./configs/addCalendarDescription.js";
+import { addApplyButton } from "./configs/addApplyButton.js";
+import { clearDisabledDates } from "./configs/clearDisabledDates.js";
+import { onDayCreate } from "./configs/onDayCreate.js";
 
 /**
  * Create a calendar with available dates.
@@ -24,10 +28,19 @@ export function createCalendar(data) {
     showMonths: showMonthsVar,
     enable: enable_dates,
     onDayCreate: (dObj, dStr, fp, dayElem) => {
-      onDayCreate(dayElem,enable_dates_obj);
+      onDayCreate(dayElem, enable_dates_obj);
     },
     onOpen: (selectedDates, dateStr, instance) => {
-      onCalendarOpen(instance);
+      createCalendarWrapper(instance);
+
+      addCalendarDescription(
+        instance,
+        "Prices are average prices per 2 persons per day."
+      );
+
+      addApplyButton(instance, displayRooms);
+
+      clearDisabledDates(instance);
     },
 
     onClose: () => document.getElementById("calendar-wrapper")?.remove(),
